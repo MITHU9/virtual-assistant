@@ -6,7 +6,7 @@ import { FaUser, FaEnvelope } from "react-icons/fa";
 import { MdLock } from "react-icons/md";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import bg from "../assets/authBg.png";
-import { useUserContext } from "../context/userContext";
+import { useUserContext } from "../context/UserContext";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);

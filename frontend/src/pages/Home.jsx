@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { useUserContext } from "../context/userContext";
+import { useUserContext } from "../context/UserContext";
 import axios from "axios";
 import { useEffect, useRef, useState } from "react";
 import ai from "../assets/ai.gif";
