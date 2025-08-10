@@ -1,4 +1,4 @@
-import { useUserContext } from "../context/userContext";
+import { useUserContext } from "../context/UserContext";
 
 const Card = ({ image }) => {
   const {
@@ -31,3 +31,4 @@ const Card = ({ image }) => {
   );
 };
 export default Card;
+
