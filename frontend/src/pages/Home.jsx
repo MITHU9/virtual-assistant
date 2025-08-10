@@ -98,7 +98,7 @@ const Home = () => {
       return;
     }
 
-    let hasGreeted = false; // flag so greeting only runs once
+    let hasGreeted = false;
     const recognition = new SpeechRecognition();
     recognition.continuous = true;
     recognition.lang = "en-US";
@@ -109,7 +109,6 @@ const Home = () => {
       console.log("Speech recognition activated");
       setListening(true);
 
-      // Trigger greeting only once when mic permission granted & recognition starts
       if (!hasGreeted && user?.name) {
         hasGreeted = true;
         const greeting = new SpeechSynthesisUtterance(

@@ -8,7 +8,7 @@ const userContext = createContext();
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState(null);
-  const serverUrl = "http://localhost:4000/api";
+  const serverUrl = "https://virtual-assistant-backend-3f5p.onrender.com/api";
   const [frontendImage, setFrontendImage] = useState(null);
   const [backendImage, setBackendImage] = useState(null);
   const [selectedImage, setSelectedImage] = useState(null);
