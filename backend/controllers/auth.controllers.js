@@ -36,9 +36,9 @@ const signUp = async (req, res) => {
     // Set cookie BEFORE sending response
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
       maxAge: 10 * 24 * 60 * 60 * 1000, // 10 days
-      sameSite: "Strict",
+      sameSite: "None",
     });
 
     // Send JSON response AFTER cookie is set
@@ -71,9 +71,9 @@ const login = async (req, res) => {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
+      secure: true,
       maxAge: 10 * 24 * 60 * 60 * 1000, // 10 days
-      sameSite: "Strict",
+      sameSite: "None",
     });
 
     res
@@ -96,3 +96,4 @@ const logout = (req, res) => {
 };
 
 export { signUp, login, logout };
+
