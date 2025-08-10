@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["http://localhost:5173","https://virtual-assistant-frontend-vsb5.onrender.com"],
     credentials: true,
   })
 );
@@ -40,3 +40,4 @@ app.listen(PORT, () => {
   connectDb();
   console.log(`Server is running on port ${PORT}`);
 });
+
