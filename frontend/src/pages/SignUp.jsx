@@ -26,12 +26,9 @@ const SignUp = () => {
       const response = await axios.post(`${serverUrl}/auth/signup`, data, {
         withCredentials: true,
       });
-      if (response.status === 200) {
-        setUser(response.data.user);
-        navigate("/customize");
-      } else {
-        throw new Error(response.data.message);
-      }
+
+      setUser(response.data.user);
+      navigate("/customize");
     } catch (error) {
       setUser(null);
       console.error("Signup failed:", error.response?.data || error.message);

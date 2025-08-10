@@ -8,20 +8,34 @@ const userContext = createContext();
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState(null);
-  const serverUrl = "http://localhost:5000/api";
+  const serverUrl = "http://localhost:4000/api";
+  const [frontendImage, setFrontendImage] = useState(null);
+  const [backendImage, setBackendImage] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
 
   const handleCurrentUser = async () => {
     try {
       const response = await axios.get(`${serverUrl}/user/current`, {
         withCredentials: true,
       });
-      if (response.status === 200) {
-        setUser(response.data.user);
-      } else {
-        throw new Error(response.data.message);
-      }
+
+      setUser(response.data.user);
     } catch (error) {
       console.error("Error fetching current user:", error);
+    }
+  };
+
+  const getGeminiRes = async (command) => {
+    try {
+      const response = await axios.post(
+        `${serverUrl}/user/ask`,
+        { command },
+        { withCredentials: true }
+      );
+      return response.data;
+    } catch (error) {
+      console.error("Error fetching Gemini response:", error);
+      return null;
     }
   };
 
@@ -29,10 +43,23 @@ const UserContext = ({ children }) => {
     handleCurrentUser();
   }, []);
 
-  //console.log(user);
+  console.log(user);
 
   return (
-    <userContext.Provider value={{ user, setUser, serverUrl }}>
+    <userContext.Provider
+      value={{
+        user,
+        setUser,
+        serverUrl,
+        frontendImage,
+        setFrontendImage,
+        backendImage,
+        setBackendImage,
+        selectedImage,
+        setSelectedImage,
+        getGeminiRes,
+      }}
+    >
       {children}
     </userContext.Provider>
   );
